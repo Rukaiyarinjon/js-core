@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+
+    <!-- dinamic widow open -->
+
+</head>
+<body>
+   <form action="#" name="f">
+    Name: <br>
+    <input type="text" name="n"><br>
+    Adress: <br>
+    <textarea name="address" id=""></textarea><br>
+    Email:<br>
+    <input type="email" name="e"><br>
+
+    <div>Gender<br/>
+        male<input type="radio" name="rdoG" value="male">
+        female<input type="radio" name="rdoG" value="female">
+
+    </div><br>
+    <div>education<br>
+        <select name="textcourse">
+            <option value="MBA">MBA</option>
+            <option value="bba">bba</option>
+            <option value="ba">ba</option>
+            <option value="ma">ma</option>
+        </select>
+
+
+    </div>
+    <div>course<br>
+       <input type="checkbox" name="cdoC" value="html">html<br>
+       <input type="checkbox" name="cdoC" value="bootstarp">bootstarp<br>
+       <input type="checkbox" name="cdoC" value="js">js<br>
+       <input type="checkbox" name="cdoC" value="php">php<br>
+       
+
+    </div>
+    <input type="button" value="submit" onclick="my_f()">
+    <input type="reset" value="reset">
+   </form>
+   <script>
+    function my_f(){
+        var name=document.f.n.value;
+        var address=document.f.address.value;
+        var email=document.f.e.value;
+        var education=document.f.textcourse.value;
+
+        doc=open('','','width=100px ,height=200px');
+        var gender ="";
+        var course="";
+
+        // check if radio button is selected  and read selected value
+        for(i=0; i<document.f.rdoG.length;i++){
+            if(document.f.rdoG[i].checked){
+                gender = document.f.rdoG[i].value;
+            }
+        }
+        for(j=0; j<document.f.cdoC.length;j++){
+            if(document.f.cdoC[j].checked){
+                course+= document.f.cdoC[j].value+",";
+            }
+        }
+
+       
+
+        with(doc.document){
+            write("<html>");
+                write("<head><title>"+title+"</title></head>");
+                write("<body style='background-color:gray'>");
+                    write("<div style='background-color:white'>");
+                    write("Name:"+name);
+                    write("<br>");
+                    write("Address:"+address);
+                    write("<br>");
+                    write("Email:"+email);
+                    write("<br>");
+                    write("Gender:"+gender+"<br>");
+                    write("<br");
+                    write("education:"+education);
+                    write("<br>");
+                    write("course:"+course);
+                    write("<br>");
+                    write('<button onclick="self.close()">close </button>');
+                    write("<input type='button' value='print' onclick='self.print();'/>");
+                
+            write("</html>");
+        
+        }
+    }
+   </script>
+</body>
+</html>
