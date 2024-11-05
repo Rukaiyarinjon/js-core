@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form</title>
+    </head>
+    <body>
+        <section style="height: 600px; background-color: rgb(rgb(100, 89, 89), rgb(125, 129, 125), rgb(67, 67, 73));">
+            <div class="form-container" style="background-color: rgb(119, 143, 143); padding: 10px 20px; border-radius: 20px; justify-content: center; align-items: center; display: flex; width: 400px; margin: auto;  box-shadow: rgba(0,0,0,0.35);">
+    
+                <form action="#" name="myform">
+                    Name :<br>
+                    <input type="text" name="name" id="name" onblur="nameChk()"><br><br>
+    
+                    Email: <br>
+                    <input type="email" name="email" id="email" onblur="checkEmail()"><br><br>
+    
+                    Address: <br>
+                    <textarea name="address" id=""></textarea><br><br>
+    
+                    <div>
+                        <span>Gender:</span>
+                        Male:<input type="radio" name="gen" value="male">
+                       Female:<input type="radio" name="gen" value="female">
+    
+    
+                    </div><br>
+                    <div>
+                        <span>Round</span>
+                        <select name="round" id="">
+                            <option value="59">59</option>
+                            <option value="60">60</option>
+                            <option value="61">61</option>
+                            <option value="62">62</option>
+                        </select>
+                    </div><br>
+    
+                    <div>
+                        <span>Certificate</span>
+                        <input type="checkbox" name="cer" value="SSC">SSC
+                        <input type="checkbox" name="cer" value="HSC">HSC
+                        <input type="checkbox" name="cer" value="BSC">BSC
+                    </div><br>
+                    <button type="Submit" onclick="submitFun()">Submit</button>
+                    <button type="Reset">Reset</button>
+                </form>
+    
+            </div>
+        </section>
+        <script>
+            
+            //pattern method
+
+            //name function
+
+            function nameChk(){
+                var name = document.getElementById('name');
+                var nameNAN =/^[0-9A-Za-z]{4,11}$/;
+                if(!nameNAN.test(name.value)){
+                    alert('please enter minimum 4 and max 11');
+                }
+            }
+
+            //if else method
+
+            function nameChk(){
+                var Name=document.myform.name.value;
+                if(Name.length>11){
+                alert('name should be 11 characters')
+                return false;
+            }else{
+                return true;
+            }
+            }
+
+            
+
+
+
+            //email function
+            function checkEmail(){
+                const email=document.getElementById('email');
+                const a = /^[a-z-0-9.%+-]+@[a-z-0-9.-]+\.[a-z]{2,4}$/;
+                if(!a.test(email.value)){
+                    alert('please enter your valid email');
+                }
+    
+            }
+    
+            //submit buuton click function
+            function submitFun(){
+                var Name=document.myform.name.value;
+                var Email=document.myform.email.value;
+                const Address=document.myform.address.value;
+                const Round=document.myform.round.value;
+                let Gender='';
+                let Certificate ='';
+    
+                //check Gender
+    
+                for(i = 0;i<document.myform.gen.length;i++){
+                    if(document.myform.gen[i].checked){
+                        Gender=document.myform.gen[i].value;
+                    }
+                }
+    
+                //check certificate
+    
+                for(j = 0;j<document.myform.cer.length;j++){
+                    if(document.myform.cer[j].checked){
+                        Certificate+=document.myform.cer[j].value+",";
+                    }
+                }
+                doc = open('','', 'width=500px , height=350px');
+                with(doc.document){
+                    write("<body style ='background-color:skyblue; padding:10px 20px';");
+                    write("<div border:2px solid white; padding:10px; border-radius:20px'>");
+                    write("Name:"+ Name + '<br>');
+                    write("Email:"+ Email + '<br>');
+                    write("Address:"+ Address + '<br>');
+                    write("Gender:"+ Gender + '<br>');
+                    write("Certificate:"+ Certificate + '<br>');
+                    write("Round:"+ Round + '<br>');
+                    write('<button style="background-color:Red; padding:10px 20px; border-radius:20px; margin-right:30px;"onclick="self.close()">close</button');
+                        write("<br>");
+                        write('<button style="background-color:Green; padding:10px 20px; border-radius:20px;"onclick="self.Print()">print</button');
+                }
+            }
+        </script> 
+</body>
+</html>
