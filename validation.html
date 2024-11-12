@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window open</title>
+</head>
+<body>
+    <section>
+        <div>
+            <form action="#" name="myform">
+                name: <br>
+                <input type="text" name="name" id="name" onblur="nameChk()"><br><br>
+                email: <br>
+                <input type="email" name="email" id="email" onblur="Checkemail()"><br><br>
+
+                address :<br>
+
+                <textarea name="address" id=""></textarea>
+
+               
+   
+<!-- 
+               password :<br>
+               <input type="password" name="password" id="password" onblur="Checkpass()"><br><br> -->
+
+               
+               <div>
+                <span>round</span>
+                <select name="round" id="">
+                    <option value="59">59</option>
+                    <option value="69">69</option>
+                    <option value="79">79</option>
+                    <option value="89">89</option>
+                </select>
+            </div><br>
+
+               <div>
+                <span>Certificate</span>
+                <input type="checkbox" name="cer" value="ssc">ssc
+                <input type="checkbox" name="cer" value="hsc">hsc
+                <input type="checkbox" name="cer" value="bsc">bsc
+            </div><br>
+
+               <div>
+                <span>Gender:</span>
+                male<input type="radio" name="gen" value="male">
+               female<input type="radio" name="gen" value="female">
+
+               </div>
+
+              
+
+
+
+                <button type="submit" onclick="submitFun()">submit</button>
+                <button type="reset">reset</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- name method -->
+
+  <script>
+      function nameChk(){
+        var name = document.getElementById('name');
+        var nameNAN =/^[0-9A-Za-z]{4,10}$/;
+        if(!nameNAN.test(name.value)){
+            alert('enter minimum 4 max 11')
+        }
+      }
+
+    //   email function
+    function Checkemail(){
+        const email= document.getElementById('email');
+        const a= /^[a-z-0-9.+%-]+@[a-z-0-9.-]\.[a-z]{2,4}$/;
+        if(!a.test(email.value)){
+            alert('enter valid mail')
+        }
+    }
+
+    // // password function
+
+    // function Checkpass(){
+    //     var password =document.getElementById('password');
+    //     var passwordNAN =/^[0-9]+[@-#-%]+[a-z]{5,8}$/;
+    //     if(!password.test(password.value)){
+    //         alert('enter valid passwor')
+    //     }
+    // }
+
+    // submit function
+
+    function submitFun(){
+        var name= document.myform.name.value;
+        var email=document.myform.email.value;
+        var address=document.myform.address.value;
+        var round=document.myform.round.value;
+        let gender='';
+        let certificate='';
+
+        // check gender
+
+        for(i =0; i<document.myform.gen.length;i++){
+            if(document.myform.gen[i].checked){
+                gender=document.myform.gen[i].value;
+            }
+
+        }
+
+        // check certificate
+        for(j =0; j<document.myform.cer.length;j++){
+            if(document.myform.cer[j].checked){
+                certificate+=document.myform.cer[j].value+",";
+            }
+        }
+        doc = open('','', 'width=500px , height=350px');
+       with(doc.document){
+        write("name:"+ name + '<br>');
+        write("email:"+ email + '<br>');
+        write("address:"+ address + '<br>');
+        write("round:"+ round + '<br>');
+        write("gender:"+ gender+ '<br>');
+        write('<button onclick="self.close()">close</button');
+        write("<br>");
+        write('<button onclick="self.Print()">print</button');
+       }
+
+    }
+
+</script>
+    
+</body>
+</html>
